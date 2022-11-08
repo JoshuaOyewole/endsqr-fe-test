@@ -1,0 +1,38 @@
+@use "../abstracts/variables" as variable;
+@use "../base/fonts" as fonts;
+@use "../abstracts/mixins" as mixin;
+
+
+.btn{
+    @include mixin.flex($justify:center, $align:center);
+    flex-direction: row;
+    gap: 8px;
+    padding: 16px 8px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    font-family: 'Matter';
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: .01em;
+    color: variable.$Lendsqr-Main;
+    @include mixin.media('phone'){
+        padding: 10px 8px;
+    }
+}
+
+.primary_btn {
+    background:  variable.$Lendsqr-Main;
+    color:  variable.$White;
+    width: 100%;
+    height: auto;
+    max-height: 52px;
+}
+.secondary_btn {
+    background:  variable.$White;
+    color:  variable.$Lendsqr-Main;
+    width: 100%;
+    height: auto;
+    max-height: 52px;
+}

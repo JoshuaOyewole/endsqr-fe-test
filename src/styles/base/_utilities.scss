@@ -1,0 +1,84 @@
+@use "../abstracts/mixins" as mixin;
+
+
+
+//UTILITIES CLASSES
+
+.flex{
+  display: flex;
+}
+.h-45{
+  height: 45% !important;
+}
+.w-50{
+  width: 50% !important;
+}
+.w-90{
+  width: 90% !important;
+}
+.wrap{
+  flex-wrap: wrap;
+}
+.show {
+  display: flex !important;
+}
+
+.block {
+  display: block
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.my-s {
+  margin: 25px 0 4px !important;
+}
+.pt-m{
+  padding-top: 5rem !important;
+}
+.pb-s{
+  padding-bottom: 2rem !important;
+}
+.my-m {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+.px-s{
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.mt-2 {
+  margin-top: 2rem !important;
+}
+
+.mb-1 {
+  margin-bottom: 1rem !important;
+}
+
+.pr-s {
+  padding-right: .3rem !important;
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
+.col {
+
+  flex-direction: column !important;
+}
+
+.show-on-mobile {
+  display: none !important;
+
+  @media (max-width: 900px) {
+    display: flex !important;
+    margin: 4rem 0;
+  }
+}
+
+.center {
+  @include mixin.flex($justify: center, $align: center)
+}

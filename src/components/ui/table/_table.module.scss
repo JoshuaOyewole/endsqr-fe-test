@@ -1,0 +1,29 @@
+@use "/styles/base/variables" as variable;
+@use "/styles/mixins/breakpoints" as breakpoints; 
+.table_container {
+  table {
+    width: 100%;
+    @include breakpoints.media("<desktop") {
+      min-width: 1100px;
+    }
+
+    text-align: left;
+    border-collapse: collapse;
+
+    th {
+      background-color: variable.$grey-100;
+
+      padding: 0.5rem 0;
+    }
+
+    .table-row {
+      td {
+        padding: 0.889rem 0;
+      }
+
+      &:not(:first-of-type) {
+        border-top: 1px solid variable.$grey-100;
+      }
+    }
+  }
+}

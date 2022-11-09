@@ -3,9 +3,8 @@ import loginImg from "../../assets/images/pablo-sign-in.png"
 import logo from "../../assets/images/logo.png"
 import LoginForm from "./LoginForm"
 
-type Props = {}
 
-export default function index({ }: Props) {
+export default function index() {
   return (
     <div className={LoginStyles.login__container}>
 
@@ -26,7 +25,6 @@ export default function index({ }: Props) {
         <div className={LoginStyles.login__FormContainer} >
           <h2 className={LoginStyles.login__title}>Welcome!</h2>
           <h2 className={LoginStyles.login__instruction}>Enter details to login.</h2>
-          
           <LoginForm />
         </div>
       </div>

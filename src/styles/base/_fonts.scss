@@ -1,18 +1,22 @@
 @font-face {
   font-family: "Avenir Next";
-  src: url("../../assets/font/avenir-next/AvenirNextLTPro-Regular.otf") format("opentype"),
-    url("../../assets/font/avenir-next/AvenirNextLTPro-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
+  src: url("../../assets/font/avenir-next/AvenirNextLTPro-Regular.otf") 
+  format("opentype");
+  font-weight: regular;
 }
 
 @font-face {
   font-family: "Avenir Next";
-  src: url("../../assets/font/avenir-next/AvenirNextLTPro-Bold.otf") format("opentype"),
-    url("../../assets/font/avenir-next/AvenirNextLTPro-Bold.otf") format("otf");
+  src: url("../../assets/font/avenir-next/AvenirNextLTPro-Bold.otf") format("opentype");
   font-weight: bold;
-  font-style: normal;
 }
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../../assets/font/avenir-next/AvenirNextLTPro-It.otf") format("opentype");
+  font-weight: italic;
+}
+
 /* 
 @font-face {
   font-family: "Matter";

@@ -1,24 +1,33 @@
 @use "../abstracts/mixins" as mixin;
-
+@use "../abstracts/variables" as variable;
 
 
 //UTILITIES CLASSES
 
-.flex{
+.flex {
   display: flex;
 }
-.h-45{
+
+.h-45 {
   height: 45% !important;
 }
-.w-50{
+
+.w-50 {
   width: 50% !important;
 }
-.w-90{
+
+.tertiary-color {
+  color: variable.$tertiary
+}
+
+.w-90 {
   width: 90% !important;
 }
-.wrap{
+
+.wrap {
   flex-wrap: wrap;
 }
+
 .show {
   display: flex !important;
 }
@@ -34,23 +43,34 @@
 .my-s {
   margin: 25px 0 4px !important;
 }
-.pt-m{
+
+.pt-m {
   padding-top: 5rem !important;
 }
-.pb-s{
+
+.pb-s {
   padding-bottom: 2rem !important;
 }
+
 .my-m {
   margin-top: 3rem !important;
   margin-bottom: 3rem !important;
 }
-.px-s{
+
+.px-s {
   padding-left: 1rem !important;
   padding-right: 1rem !important;
 }
 
 .mt-2 {
   margin-top: 2rem !important;
+}
+.mr-sIcon {
+  margin-right: 1rem !important;
+  @include mixin.media("tab"){
+    display: none;
+  }
+ 
 }
 
 .mb-1 {

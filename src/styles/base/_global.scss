@@ -90,3 +90,10 @@ img {
   -ms-user-select: none;
   user-select: none;
 }
+
+.wrapper{
+  @include mixin.media("XLdesktop"){
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}

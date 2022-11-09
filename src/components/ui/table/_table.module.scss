@@ -1,9 +1,10 @@
-@use "/styles/base/variables" as variable;
-@use "/styles/mixins/breakpoints" as breakpoints; 
+@use "../../../styles/abstracts/variables" as variable;
+@use "../../../styles/abstracts/mixin" as mixin;
+
 .table_container {
   table {
     width: 100%;
-    @include breakpoints.media("<desktop") {
+    @include mixin.media("<desktop") {
       min-width: 1100px;
     }
 

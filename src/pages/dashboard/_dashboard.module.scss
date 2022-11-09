@@ -1,0 +1,19 @@
+@use "../../styles/abstracts/mixins" as mixin;
+@use "../../styles/abstracts/variables" as variable;
+
+.userbox {
+    &__boxesContainer {
+        @include mixin.flex($justify:space-between);
+    }
+
+    &__userHeading {
+        font-family: 'Work Sans';
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+        color: variable.$tertiary;
+        text-transform: capitalize;
+        margin-bottom: 3rem;
+        margin-top: 2rem;
+    }
+}

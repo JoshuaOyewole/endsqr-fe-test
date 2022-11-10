@@ -3,11 +3,20 @@
 
 .userbox {
     &__boxesContainer {
-        @include mixin.flex($justify:space-between);
+        @include mixin.flex($justify: space-around);
+        flex-wrap: wrap;
+        row-gap: 2rem;
+        margin-bottom: 3rem;
+
+        @include mixin.media("phone") {
+            row-gap: 1rem;
+        }
     }
 
+    
+
     &__userHeading {
-        font-family: 'Work Sans';
+        font-family: 'Work Sans', sans-serif;
         font-weight: 500;
         font-size: 2.4rem;
         line-height: 2.8rem;
@@ -15,5 +24,11 @@
         text-transform: capitalize;
         margin-bottom: 3rem;
         margin-top: 2rem;
+
+        @include mixin.media("phone") {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            margin-top: 0rem;
+        }
     }
 }

@@ -15,17 +15,19 @@ type DashboardProps = {
 function UserDashboardLayout(props: DashboardProps) {
     const { children } = props;
 
-    
+
     return (
         <div className={DashboardStyles.dashboard__container}>
             {/* HEADER SECTION (TOP NAVBAR) */}
             <header className={DashboardStyles.dashboard__header}>
                 <div className={DashboardStyles.dashboard__logoContainer}>
-                    <img
-                        src={logo}
-                        alt="LendSqr Logo"
-                        className={DashboardStyles.dashboard__logo}
-                    />
+                    <a href="/" className="logoCobt">
+                        <img
+                            src={logo}
+                            alt="LendSqr Logo"
+                            className={DashboardStyles.dashboard__logo}
+                        />
+                    </a>
                 </div>
                 <div className={DashboardStyles.dashboard__searchContainer}>
                     <input

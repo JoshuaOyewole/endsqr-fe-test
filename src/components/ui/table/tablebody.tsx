@@ -1,5 +1,12 @@
-import React from "react";
+import TableStyle from "./_table.module.scss"
 
-export default function TableRow(props: any) {
-  return <tr className="table-row xs">{props.children}</tr>;
+
+type tableBodyProps = {
+  children: React.ReactNode
+}
+
+export default function TableRow(props: tableBodyProps) {
+  return <tr className={TableStyle["table-row"]}>
+    {props.children}
+  </tr>;
 }

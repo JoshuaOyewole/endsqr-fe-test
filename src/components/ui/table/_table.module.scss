@@ -1,29 +1,112 @@
-@use "../../../styles/abstracts/variables" as variable;
-@use "../../../styles/abstracts/mixin" as mixin;
+@use "../../../styles//abstracts/variables" as variable;
+@use "../../../styles/abstracts/mixins" as mixin;
 
 .table_container {
+  background: variable.$White;
+  padding: 2rem 3rem;
+  height: 40vh;
+  overflow: scroll;
+
   table {
+    font-family: 'Work Sans', sans-serif;
     width: 100%;
-    @include mixin.media("<desktop") {
+    background-color: variable.$White;
+    padding: 2rem;
+    text-align: left;
+    border-collapse: collapse;
+    overflow: scroll;
+
+    @include mixin.media("desktop") {
       min-width: 1100px;
     }
 
-    text-align: left;
-    border-collapse: collapse;
-
     th {
-      background-color: variable.$grey-100;
 
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+      color: variable.$secondary;
+      text-transform: uppercase;
       padding: 0.5rem 0;
+
+      &>img {
+        width: 1rem;
+        margin-left: .2rem;
+      }
     }
 
     .table-row {
-      td {
-        padding: 0.889rem 0;
-      }
+      font-size: 1rem;
 
       &:not(:first-of-type) {
-        border-top: 1px solid variable.$grey-100;
+        border-top: 1px solid rgba(33, 63, 125, 0.1);
+        ;
+      }
+
+      td {
+        padding: 1.5rem 0;
+        color: variable.$secondary;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+      }
+
+
+    }
+  }
+}
+
+.pagination {
+  &__container {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    @include mixin.flex($align: center, $justify: space-between)
+  }
+
+  &__statusWrapper {
+    @include mixin.flex($align: center)
+  }
+
+  &__statusInfo {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.6rem;
+    color: variable.$secondary;
+    margin-right: 1rem;
+
+    &--right {
+      margin-left: 1rem;
+      font-weight: 400;
+
+      line-height: 1.6rem;
+      color: variable.$secondary;
+    }
+  }
+
+  &__buttonsWrapper {
+    @include mixin.flex($align: center);
+
+    button {
+      flex-basis: 10%;
+      margin: 1rem;
+      background-color: transparent;
+
+      &:first-child,
+      &:last-child {
+        background: rgba(33, 63, 125, 0.1);
+        border-radius: 4px;
+        padding: .3rem .5rem;
+
+        & svg{
+          color: #213F7D;
+        }
+      }
+
+      @include mixin.media("phone") {
+        &:not(:first-child, :last-child){
+          display: none;
+        }
       }
     }
   }

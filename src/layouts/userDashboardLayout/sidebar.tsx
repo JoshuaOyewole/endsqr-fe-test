@@ -32,7 +32,8 @@ import switchOrganizationIcon from "../../assets/images/briefcase.png";
 
 type navListProps = {
     icon: React.ReactNode,
-    text: string
+    text: string,
+    
 }
 
 
@@ -140,6 +141,8 @@ const Sidebar = () => {
                     <img src={dashboardIcon} alt='dashboard icon' /> <span>Dashboard</span>
                 </SidebarNavItem>
             </ul>
+
+            {/* CUSTOMERS SECTION */}
             <section className={DashboardStyles["dashboard__sidebar--section"]}>
                 <h4 className={DashboardStyles["dashboard__sidebar--sectionTitle"]}>CUSTOMERS</h4>
                 <ul>
@@ -152,6 +155,8 @@ const Sidebar = () => {
                     }
                 </ul>
             </section>
+
+            {/* BUSINESSES SECTION */}
             <section className={DashboardStyles["dashboard__sidebar--section"]}>
                 <h4 className={DashboardStyles["dashboard__sidebar--sectionTitle"]}>BUSINESSES</h4>
                 <ul>
@@ -165,6 +170,7 @@ const Sidebar = () => {
                 </ul>
             </section>
 
+            {/* SETTINGS SECTION */}
             <section className={DashboardStyles["dashboard__sidebar--section"]}>
                 <h4 className={DashboardStyles["dashboard__sidebar--sectionTitle"]}>SETTINGS</h4>
                 <ul>

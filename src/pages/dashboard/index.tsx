@@ -10,11 +10,31 @@ import TableRow from "../../components/ui/table/tablebody"
 import Select from "../../components/form/Select/select"
 import TableStyle from "../../components/ui/table/_table.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft,faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import MoreButton from "../../components/ui/button/moreButton/moreButton"
 
-type Props = {}
 
-export default function index({ }: Props) {
+
+
+
+export default function index() {
+  const pagesOptions = [
+    { value: '10', label: '10' },
+    { value: '20', label: '20' },
+    { value: '30', label: '30' },
+    { value: '40', label: '40' },
+    { value: '50', label: '50' },
+    { value: '60', label: '60' },
+    { value: '70', label: '70' },
+    { value: '80', label: '80' },
+    { value: '90', label: '90' },
+    { value: '100', label: '100' }
+  ]
+
+  const viewMore = () =>{
+    alert('Displaying More')
+  }
+
   return (
     <div className="wrapper">
       <UserDashboardLayout>
@@ -57,16 +77,16 @@ export default function index({ }: Props) {
           }
         /* tableHeaderClass="" */
         >
-          <TableRow>
+          <TableRow moreButton={true}>
             <td>Lendsqr</td>
             <td>Adedeji</td>
             <td>adedeji@lendsqr.com</td>
             <td>08078903721</td>
             <td>May 15, 2020 10:00 AM</td>
             <td>Inactive</td>
-            <td>. . .</td>
+            <MoreButton handleClick={viewMore} />
           </TableRow>
-          <TableRow>
+         {/*  <TableRow>
             <td>Irorun</td>
             <td>Debby Ogana</td>
             <td>debby2@irorun.com</td>
@@ -129,27 +149,16 @@ export default function index({ }: Props) {
             <td>08078903721</td>
             <td>May 15, 2020 10:00 AM</td>
             <td>Inactive</td>
-          </TableRow>
+          </TableRow> */}
         </Table>
         <div className={TableStyle.pagination__container}>
           <div className={TableStyle.pagination__statusWrapper}>
-          <span className={TableStyle.pagination__statusInfo}>Showing</span>
-          <Select 
-            selectOptions={[
-              { value: '10', label: '10' },
-              { value: '20', label: '20' },
-              { value: '30', label: '30' },
-              { value: '40', label: '40' },
-              { value: '50', label: '50' },
-              { value: '60', label: '60' },
-              { value: '70', label: '70' },
-              { value: '80', label: '80' },
-              { value: '90', label: '90' },
-              { value: '100', label: '100' }
-            ]} 
-            selectPlaceholder="10"
-          />
-          <span className={TableStyle["pagination__statusInfo--right"]}> out of 100</span>
+            <span className={TableStyle.pagination__statusInfo}>Showing</span>
+            <Select
+              selectOptions={pagesOptions}
+              selectPlaceholder="10"
+            />
+            <span className={TableStyle["pagination__statusInfo--right"]}> out of 100</span>
           </div>
 
           <div className={TableStyle["pagination__buttonsWrapper"]}>

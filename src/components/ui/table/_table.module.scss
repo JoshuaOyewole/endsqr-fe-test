@@ -6,6 +6,7 @@
   padding: 2rem 3rem;
   height: 40vh;
   overflow: scroll;
+  position: relative;
 
   table {
     font-family: 'Work Sans', sans-serif;
@@ -15,6 +16,7 @@
     text-align: left;
     border-collapse: collapse;
     overflow: scroll;
+
 
     @include mixin.media("desktop") {
       min-width: 1100px;
@@ -36,6 +38,7 @@
 
     .table-row {
       font-size: 1rem;
+
 
       &:not(:first-of-type) {
         border-top: 1px solid rgba(33, 63, 125, 0.1);
@@ -98,13 +101,13 @@
         border-radius: 4px;
         padding: .3rem .5rem;
 
-        & svg{
+        & svg {
           color: #213F7D;
         }
       }
 
       @include mixin.media("phone") {
-        &:not(:first-child, :last-child){
+        &:not(:first-child, :last-child) {
           display: none;
         }
       }

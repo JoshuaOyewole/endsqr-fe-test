@@ -10,23 +10,25 @@ export default function index() {
 
       {/* LOGIN IMAGE AT THE LEFT */}
       <div className={LoginStyles.login__left}>
-        <img src={logo} className={LoginStyles.logo} alt='LendSqr Logo' />
+        <a href="/" className="logoCont">
+          <img src={logo} className={LoginStyles.logo} alt='LendSqr Logo' />
+        </a>
 
-          <div className={LoginStyles.login__ImageContainer}>
-            <img
-              src={loginImg}
-              alt="Welcome to LendSqr. Kindly login below with your login details"
-              className={LoginStyles.login__image}
-            />
-          </div>
-        </div>
-
-        {/* LOGIN FORM SECTION */}
-        <div className={LoginStyles.login__FormContainer} >
-          <h2 className={LoginStyles.login__title}>Welcome!</h2>
-          <h2 className={LoginStyles.login__instruction}>Enter details to login.</h2>
-          <LoginForm />
+        <div className={LoginStyles.login__ImageContainer}>
+          <img
+            src={loginImg}
+            alt="Welcome to LendSqr. Kindly login below with your login details"
+            className={LoginStyles.login__image}
+          />
         </div>
       </div>
-      )
+
+      {/* LOGIN FORM SECTION */}
+      <div className={LoginStyles.login__FormContainer} >
+        <h2 className={LoginStyles.login__title}>Welcome!</h2>
+        <h2 className={LoginStyles.login__instruction}>Enter details to login.</h2>
+        <LoginForm />
+      </div>
+    </div>
+  )
 }

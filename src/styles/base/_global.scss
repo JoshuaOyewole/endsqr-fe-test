@@ -16,11 +16,11 @@ html {
   }
 
   @include mixin.media("desktop") {
-    font-size: 70%; //9.5px;
+    font-size: 59.375%; //9.5px;
   }
 
   @include mixin.media("tab") {
-    font-size: 59.37%; //9px;
+    font-size: 56.25%; //9px;
   }
 
   @include mixin.media("phone") {
@@ -69,6 +69,14 @@ img {
 ::-webkit-scrollbar {
   width: 5px;
   max-height: 5px;
+  @include mixin.media("phone"){
+    width: 2px;
+    max-height: 2px;
+  }
+  @media (max-height:"600px") {
+    width: 3.5px;
+    max-height: 2px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -79,6 +87,7 @@ img {
   background-color: variable.$Lendsqr-Main;
   border-radius: 10px;
   margin-right: 5px;
+  
 }
 
 //prevent select

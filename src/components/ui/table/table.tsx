@@ -7,7 +7,8 @@ export interface TableProps {
   tableHeader: Array<string>;
   tableClass?: string;
   tableHeaderClass?: string;
-  tableTitle?: string
+  tableTitle?: string;
+  showFilterComponent?:()=>void
 }
 
 export default function Table(props: TableProps) {
@@ -20,7 +21,12 @@ export default function Table(props: TableProps) {
             {props.tableHeader.map((header: string, index: number) => {
               return (
                 <th key={index}>
-                  {header} <img src={filterIcon} alt="filter"  />
+                  {header}
+                    <img 
+                      onClick={()=>alert("Filtering")} 
+                      src={filterIcon} 
+                      alt="filter"  
+                    />
                 </th>
               );
             })}

@@ -1,0 +1,49 @@
+@use "../../../styles/abstracts/mixins" as mixin;
+@use "../../../styles/abstracts/variables" as variable;
+
+.filterUser {
+    &__container {
+        background: variable.$White;
+        border: 1px solid rgba(84, 95, 125, 0.14);
+        box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+        border-radius: 4px;
+        height: 45vh;
+        width: 16vw;
+        overflow: scroll;
+        position: absolute;
+        z-index: 20;
+        top: 42rem;
+
+        @media (min-width:1200px) {
+           /*  min-height: 80vh;
+            height: 100%; */
+        }
+    }
+
+    &__filterFrom {
+        padding: 2rem 1rem;
+    }
+
+    &__inputField {
+        height: 3.5rem !important;
+        padding: .5rem 1rem !important;
+    }
+
+    &__label {
+        font-size: 1.4rem !important;
+        font-weight: 500 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    &__btnContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2rem 0 1rem 0!important;
+    }
+
+}
+
+.inputContainer {
+    margin-bottom: 1rem !important;
+}

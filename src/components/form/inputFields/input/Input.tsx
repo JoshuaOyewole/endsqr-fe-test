@@ -9,6 +9,8 @@ export interface InputProps {
   iconPosition?: string;
   iconAction?: Function;
   iconClassName?: string;
+  labelClassName?: string,
+  inputContainerClassName?: string,
   [rest: string]: any;
 }
 
@@ -20,22 +22,25 @@ const InputField: React.FC<InputProps> = (props, _ref) => {
     iconPosition,
     iconAction,
     iconClassName,
+    labelClassName,
+    inputContainerClassName,
     ...rest
   } = props;
 
+  console.log(`Hello World ${inputContainerClassName} ${labelClassName}`);
+  
   return (
-    <div className={`${CommonInputStyle.input_container}`}>
+    <div className={`${CommonInputStyle.input_container} ${inputContainerClassName ? inputContainerClassName : ""}`}>
       {label && (
-        <label className="input-label">
+        <label className={`input-label ${labelClassName ? labelClassName : ""}`}>
           {label}
           {isRequired && <sup>*</sup>}
         </label>
       )}
 
       <div
-        className={`${CommonInputStyle.input_field_container}  ${
-          icon && (iconPosition === "left" ? "icon-left" : "icon-right")
-        }`}
+        className={`${CommonInputStyle.input_field_container}  ${icon && (iconPosition === "left" ? "icon-left" : "icon-right")
+          }`}
       >
         <input {...rest} />
 

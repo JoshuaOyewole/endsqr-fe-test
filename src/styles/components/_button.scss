@@ -7,31 +7,42 @@
     @include mixin.flex($justify:center, $align:center);
     flex-direction: row;
     gap: 8px;
-    padding: 16px 8px;
-    border-radius: 4px;
+    padding: 1rem .8rem;
+    border-radius: .8rem;
     border: none;
     outline: none;
-    font-family: 'Matter';
-    font-weight: 500;
-    font-size: 13px;
+    min-width: 45%;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
     line-height: 20px;
+    background: variable.$White;
     letter-spacing: .01em;
-    color: variable.$Lendsqr-Main;
+    color: variable.$secondary;
     @include mixin.media('phone'){
-        padding: 10px 8px;
+        padding: 1rem .8rem;
     }
 }
 
 .primary_btn {
     background:  variable.$Lendsqr-Main;
     color:  variable.$White;
-    width: 100%;
+    width: 45%;
     height: auto;
     max-height: 52px;
 }
+
+.border_btn {
+    border: 1px solid variable.$secondary;
+    color:  variable.$secondary;
+    width: 45%;
+    height: auto;
+    max-height: 52px;
+}
+
 .secondary_btn {
-    background:  variable.$White;
-    color:  variable.$Lendsqr-Main;
+    background:  variable.$secondary;
+    color:  variable.$White;
     width: 100%;
     height: auto;
     max-height: 52px;

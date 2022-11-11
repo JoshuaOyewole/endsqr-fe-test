@@ -69,10 +69,12 @@ img {
 ::-webkit-scrollbar {
   width: 5px;
   max-height: 5px;
-  @include mixin.media("phone"){
+
+  @include mixin.media("phone") {
     width: 2px;
     max-height: 2px;
   }
+
   @media (max-height:"600px") {
     width: 3.5px;
     max-height: 2px;
@@ -87,7 +89,7 @@ img {
   background-color: variable.$Lendsqr-Main;
   border-radius: 10px;
   margin-right: 5px;
-  
+
 }
 
 //prevent select
@@ -100,10 +102,33 @@ img {
   user-select: none;
 }
 
-.wrapper{
-  @include mixin.media("XLdesktop"){
+.wrapper {
+  @include mixin.media("XLdesktop") {
     max-width: 70%;
     margin: 0 auto;
   }
 }
 
+.inactiveUser {
+  color: variable.$secondary !important;
+  background: rgba($color: variable.$secondary, $alpha: 0.1) !important;
+}
+
+.pendingUser {
+  color: variable.$Warning-Main !important;
+  background: rgba($color: variable.$Warning-Main, $alpha: 0.1) !important;
+}
+
+.activeUser {
+  color: variable.$Success-Main !important;
+  background: rgba($color: variable.$Success-Main, $alpha: 0.1) !important;
+}
+
+.blacklistedUser {
+  color: variable.$Error-Main !important;
+  background: rgba($color: variable.$Error-Main, $alpha: 0.1) !important;
+}
+
+.hide{
+  display: none;
+}

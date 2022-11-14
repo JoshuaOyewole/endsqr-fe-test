@@ -1,7 +1,8 @@
+
 import ReactDOM from "react-dom";
-import Button from "../button
+import Button from "../button"
 import {render, cleanup,screen } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect"
+import '@testing-library/jest-dom'
 
 afterEach(cleanup)
 it("renders button without crashing", () => {

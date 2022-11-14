@@ -24,6 +24,9 @@
   width: 90% !important;
 }
 
+.uppercase{
+  text-transform: uppercase;
+}
 .wrap {
   flex-wrap: wrap;
 }
@@ -31,7 +34,9 @@
 .show {
   display: flex !important;
 }
-
+.hide{
+  display: none !important;
+}
 .block {
   display: block
 }
@@ -61,7 +66,9 @@
   padding-left: 1rem !important;
   padding-right: 1rem !important;
 }
-
+.mt-1 {
+  margin-top: 1rem !important;
+}
 .mt-2 {
   margin-top: 2rem !important;
 }

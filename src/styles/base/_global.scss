@@ -109,26 +109,22 @@ img {
   }
 }
 
-.inactiveUser {
+.Inactive {
   color: variable.$secondary !important;
   background: rgba($color: variable.$secondary, $alpha: 0.1) !important;
 }
 
-.pendingUser {
+.Pending {
   color: variable.$Warning-Main !important;
   background: rgba($color: variable.$Warning-Main, $alpha: 0.1) !important;
 }
 
-.activeUser {
+.Active {
   color: variable.$Success-Main !important;
   background: rgba($color: variable.$Success-Main, $alpha: 0.1) !important;
 }
 
-.blacklistedUser {
+.Blacklisted {
   color: variable.$Error-Main !important;
   background: rgba($color: variable.$Error-Main, $alpha: 0.1) !important;
-}
-
-.hide{
-  display: none;
 }

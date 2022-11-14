@@ -35,9 +35,19 @@
 .border_btn {
     border: 1px solid variable.$secondary;
     color:  variable.$secondary;
-    width: 45%;
+    width: 46%;
     height: auto;
     max-height: 52px;
+   
+
+    &--error{
+        border: 1px solid variable.$Error-Main;
+        color:  variable.$Error-Main;
+    }
+    &--primary{
+        border: 1px solid variable.$Lendsqr-Main;
+    color:  variable.$Lendsqr-Main;
+    }
 }
 
 .secondary_btn {

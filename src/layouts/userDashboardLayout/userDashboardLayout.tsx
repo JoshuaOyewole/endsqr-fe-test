@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { faCaretDown, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./sidebar";
+import { NavLink } from "react-router-dom";
 
 
 type DashboardProps = {
@@ -21,13 +22,13 @@ function UserDashboardLayout(props: DashboardProps) {
             {/* HEADER SECTION (TOP NAVBAR) */}
             <header className={DashboardStyles.dashboard__header}>
                 <div className={DashboardStyles.dashboard__logoContainer}>
-                    <a href="/" className="logoCobt">
+                    <NavLink to="/" className="logoCobt">
                         <img
                             src={logo}
                             alt="LendSqr Logo"
                             className={DashboardStyles.dashboard__logo}
                         />
-                    </a>
+                    </NavLink>
                 </div>
                 <div className={DashboardStyles.dashboard__searchContainer}>
                     <input
@@ -42,7 +43,7 @@ function UserDashboardLayout(props: DashboardProps) {
                 </div>
                 <div className={DashboardStyles.dashboard__headerNavWrapper}>
                     <div className="linkContainer">
-                        <a href="#doc" className={DashboardStyles["dashboard__navlink--doc"]}>Docs</a>
+                        <NavLink to="/#doc" className={DashboardStyles["dashboard__navlink--doc"]}>Docs</NavLink>
                     </div>
                     <button className={DashboardStyles.userProfile__icon}>
                         <FontAwesomeIcon icon={faBell} className={DashboardStyles.userProfile__bellIcon} />

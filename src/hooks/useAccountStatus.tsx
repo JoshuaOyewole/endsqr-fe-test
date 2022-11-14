@@ -9,29 +9,13 @@ const useAccountStatus = (accountBalance: string) => {
     const [status, setStatus] = useState<string>("Inactive");
 
     useEffect(() => {
-        switch (accountBalance) {
-            case  "200":
-                setStatus("Blacklisted");
-                break;
-    
-            case "400":
-                setStatus("Inactive");
-                break;
-    
-            case "500":
-                setStatus("Pending");
-                break;
-    
-            case "600":
-                setStatus("Active");
-                break;
-    
-            default:
-                setStatus("Inactive")
-                break;
-        }
-    }, [])
-    
+        if (parseInt(accountBalance) <= 200) setStatus("Blacklisted");
+        else if (parseInt(accountBalance) <= 400) setStatus("Inactive");
+        else if (parseInt(accountBalance) <= 500) setStatus("Pending");
+        else if (parseInt(accountBalance) >= 600) setStatus("Active");
+        else setStatus("Inactive")
+    }, [accountBalance])
+
 
 
     return [status]

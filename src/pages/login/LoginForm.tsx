@@ -3,7 +3,7 @@ import LoginStyle from "./_login.module.scss"
 import InputField from '../../components/form/inputFields/input/Input'
 import CommonInputStyles from "../../components/form/inputFields/_common-input-styles.module.scss"
 import usePasswordToggle from "../../hooks/usePasswordToggle"
-import { useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 
 type credentialsProps = {
@@ -20,7 +20,7 @@ const LoginForm = () => {
     password: ""
   })
 
-  const handleSubmit = (e:React.FormEvent)=>{
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     /* 
       1. Send the user credentials (email & password) to the login API that will be provided
@@ -28,11 +28,11 @@ const LoginForm = () => {
       3. Throw up Error
     */
 
-      navigate("/dashboard");//Assuming all things went well
+    navigate("/dashboard/users");//Assuming all things went well
 
   }
 
-  const handleChange = (e:React.ChangeEvent<HTMLButtonElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLButtonElement>) => {
     setCredentials(
       (prev) => ({
         ...prev,
@@ -41,29 +41,31 @@ const LoginForm = () => {
       )
     )
   }
-  
+
   return (
     <form className={LoginStyle.loginForm} onSubmit={handleSubmit}>
-      <InputField 
-        type="email" 
-        name="email" 
+      <InputField
+        type="email"
+        name="email"
         placeholder="Email"
         value={credentials.email}
         onChange={handleChange}
         required
       />
-      <InputField 
+      <InputField
         type={InputType}
-        name="password" 
-        placeholder="Password" 
+        name="password"
+        placeholder="Password"
         icon={Icon}
-        iconClassName={CommonInputStyles.iconRight} 
+        iconClassName={CommonInputStyles.iconRight}
         value={credentials.password}
         onChange={handleChange}
         required
       />
-      <a href="#resetPassword" className={LoginStyle.fpassword}>forget Password? </a>
-      <input type="submit" value="Log in" className= {LoginStyle.login__btn} />
+      <NavLink to="#resetPassword" className={LoginStyle.fpassword}>
+        forget Password?
+      </NavLink>
+      <input type="submit" value="Log in" className={LoginStyle.login__btn} />
     </form>
   )
 }

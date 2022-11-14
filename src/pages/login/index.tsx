@@ -2,6 +2,7 @@ import LoginStyles from "./_login.module.scss"
 import loginImg from "../../assets/images/pablo-sign-in.png"
 import logo from "../../assets/images/logo.png"
 import LoginForm from "./LoginForm"
+import { NavLink } from "react-router-dom"
 
 
 export default function index() {
@@ -10,9 +11,10 @@ export default function index() {
 
       {/* LOGIN IMAGE AT THE LEFT */}
       <div className={LoginStyles.login__left}>
-        <a href="/" className="logoCont">
+        <NavLink to="/" className="logoCont">
           <img src={logo} className={LoginStyles.logo} alt='LendSqr Logo' />
-        </a>
+        </NavLink>
+
 
         <div className={LoginStyles.login__ImageContainer}>
           <img

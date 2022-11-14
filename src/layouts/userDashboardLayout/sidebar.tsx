@@ -129,7 +129,7 @@ const Sidebar = () => {
     return (
         <aside className={DashboardStyles.dashboard__sidebar}>
             <ul>
-                <SidebarNavItem navlink="#dashboard">
+                <SidebarNavItem navlink="#switchOrganization">
                     <img src={switchOrganizationIcon} alt='dashboard icon' />
                     <div className="mr-sIcon">
                         <span> Switch Organization </span>
@@ -137,7 +137,7 @@ const Sidebar = () => {
                     </div>
                 </SidebarNavItem>
 
-                <SidebarNavItem navlink="#dashboard">
+                <SidebarNavItem navlink="/dashboard/users">
                     <img src={dashboardIcon} alt='dashboard icon' /> <span>Dashboard</span>
                 </SidebarNavItem>
             </ul>

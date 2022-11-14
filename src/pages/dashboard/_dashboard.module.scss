@@ -3,7 +3,7 @@
 
 .userbox {
     &__boxesContainer {
-        @include mixin.flex($justify: space-around);
+        @include mixin.flex($justify: space-between);
         flex-wrap: wrap;
         row-gap: 2rem;
         margin-bottom: 3rem;

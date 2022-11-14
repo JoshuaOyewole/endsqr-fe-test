@@ -1,4 +1,3 @@
-
 import UserDetails from "../../components/ui/userComponent/userDetail";
 import UserDashboardLayout from "../../layouts/userDashboardLayout/userDashboardLayout";
 

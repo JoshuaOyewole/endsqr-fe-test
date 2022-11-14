@@ -62,13 +62,15 @@
   }
 }
 
-.userStatusActive{
+.defaultUserStatus{
   display: block;
   width: 85%;
   text-align: center;
-  padding: 1rem 0rem !important;
+  padding: 1rem 2rem !important;
   border-radius: 100px;
 }
+
+
 
 .pagination {
   &__container {

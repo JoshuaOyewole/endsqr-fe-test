@@ -1,27 +1,15 @@
 
-import MoreBtnContainer from "../button/moreButton/moreBtnContainer";
 import TableStyle from "./_table.module.scss"
 
 
 type tableBodyProps = {
-  children: React.ReactNode,
-  moreButton?: boolean
+  children: React.ReactNode;
+  tableRowClass?: string;
 }
 
 export default function TableRow(props: tableBodyProps) {
-  const activateUser = () => {
-    alert('User activated')
-  }
-  const blacklistUser = () => {
-    alert('User blacklisted')
-  }
-  const viewUserDetails = () => {
-    alert(' viewing User details')
-  }
 
-  return <tr className={TableStyle["table-row"]}>
+  return <tr className={`${TableStyle["table-row"]} ${props.tableRowClass ? props.tableRowClass : ""}`}>
     {props.children}
-    
-    {props.moreButton && <MoreBtnContainer activateUser={activateUser} blacklistUser={blacklistUser} viewUserDetails={viewUserDetails} />}
   </tr>;
 }

@@ -27,7 +27,7 @@ const InputField: React.FC<InputProps> = (props, _ref) => {
     ...rest
   } = props;
 
-  console.log(`Hello World ${inputContainerClassName} ${labelClassName}`);
+
   
   return (
     <div className={`${CommonInputStyle.input_container} ${inputContainerClassName ? inputContainerClassName : ""}`}>

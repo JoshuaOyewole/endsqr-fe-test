@@ -1,6 +1,5 @@
 import React from "react";
 import TableStyles from "./_table.module.scss";
-import filterIcon from "../../../assets/images/filter.png";
 
 export interface TableProps {
   children: React.ReactNode;
@@ -8,10 +7,12 @@ export interface TableProps {
   tableClass?: string;
   tableHeaderClass?: string;
   tableTitle?: string;
-  showFilterComponent?:()=>void
+  theadIcon?: React.ReactElement;
 }
 
 export default function Table(props: TableProps) {
+  const{theadIcon = false} = props;
+
   return (
     <div className={TableStyles.table_container}>
       <div>{props.tableTitle}</div>
@@ -21,12 +22,7 @@ export default function Table(props: TableProps) {
             {props.tableHeader.map((header: string, index: number) => {
               return (
                 <th key={index}>
-                  {header}
-                    <img 
-                      onClick={()=>alert("Filtering")} 
-                      src={filterIcon} 
-                      alt="filter"  
-                    />
+                  {header} {theadIcon && theadIcon}
                 </th>
               );
             })}

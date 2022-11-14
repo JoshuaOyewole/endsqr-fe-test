@@ -1,8 +1,9 @@
+import React from "react";
 
 type btnProps = {
     btnClassName?: string,
     children: React.ReactNode,
-    handleClick: ()=>void
+    handleClick: (event:React.MouseEvent)=>void
 }
 
 
@@ -11,8 +12,10 @@ function Button(props: btnProps) {
 
     return (
         <button 
+        data-testid="button-component"
             className={`btn ${btnClassName ? btnClassName : ""}`} 
-            onClick={handleClick}>
+            onClick={handleClick}
+        >
             {children}
         </button>
     )

@@ -1,18 +1,17 @@
-/* import MoreBtnStyle from "./_moreBtn.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"; */
 import InputField from "../../form/inputFields/input/Input";
 import Button from "../button/button/button";
 import FilterUserStyles from "./_filterUser.module.scss"
 
-type filterUserProps = {
+type filterUserProps = {}
 
-}
+function FilterUser(props: filterUserProps) {
 
-function FilterUserComponent(props: filterUserProps) {
+    const handleFilter = (event: React.MouseEvent) => {
+        event.currentTarget.parentElement?.parentElement?.parentElement?.classList.toggle("hide");
+    }
 
     return (
-        <div className={FilterUserStyles.filterUser__container}>
+        <div className={`${FilterUserStyles.filterUser__container}  hide`}>
             <div className={FilterUserStyles.filterUser__filterFrom}>
                 <InputField
                     type="text"
@@ -73,8 +72,8 @@ function FilterUserComponent(props: filterUserProps) {
                 />
 
                 <div className={FilterUserStyles.filterUser__btnContainer}>
-                    <Button btnClassName="border_btn" handleClick={()=>alert("Clicked")}>Reset</Button>
-                    <Button btnClassName="primary_btn" handleClick={()=>alert("Clicked")}>Filter</Button>
+                    <Button btnClassName="border_btn" handleClick={handleFilter}>Reset</Button>
+                    <Button btnClassName="primary_btn" handleClick={handleFilter}>Filter</Button>
                 </div>
             </div>
         </div>
@@ -82,4 +81,4 @@ function FilterUserComponent(props: filterUserProps) {
     )
 }
 
-export default FilterUserComponent
+export default FilterUser

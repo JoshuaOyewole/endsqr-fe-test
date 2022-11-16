@@ -1,5 +1,3 @@
-import React from "react";
-import InputFieldStyle from "./_input.module.scss";
 import CommonInputStyle from "../_common-input-styles.module.scss";
 
 export interface InputProps {

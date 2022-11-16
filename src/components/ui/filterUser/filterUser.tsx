@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "../../form/inputFields/input/Input";
 import Button from "../button/button/button";
 import FilterUserStyles from "./_filterUser.module.scss"
@@ -9,23 +9,26 @@ type credentialsProps = {
     username: string,
     email: string,
     phone: string,
-    status: string
+    status: string,
+    date: Date
 }
 
 function FilterUser() {
-    const [credentails, setCredentials] = useState<credentialsProps>(
-        {
-            organization: " ",
-            username: " ",
-            email: " ",
-            phone: " ",
-            status: " "
-        }
-    )
+    const initialValue = {
+        organization: "",
+        username: "",
+        email: "",
+        phone: "",
+        status: "",
+        date: new Date()
+    };
+    const [credentials, setCredentials] = useState<credentialsProps>(initialValue)
 
     const handleChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        setCredentials((prev) => ({ ...prev, [e.currentTarget.id]: e.currentTarget.value }));
-        console.log(credentails.username);  
+        //Extract the input name and Value 
+        const { name, value } = e.currentTarget;
+        //Update each field 
+        setCredentials((prev) => ({ ...prev, [name]: value }));
     }
 
 
@@ -35,7 +38,7 @@ function FilterUser() {
     }
 
     const resetFields = () => {
-        console.log(credentails);
+        setCredentials({ ...initialValue });
     }
 
     return (
@@ -45,8 +48,8 @@ function FilterUser() {
                     type="text"
                     placeholder="Select"
                     name="organization"
+                    value={credentials.organization}
                     id="organization"
-                    value={credentails.organization}
                     onChange={handleChange}
                     className={FilterUserStyles.filterUser__inputField}
                     label="Organization"
@@ -58,8 +61,8 @@ function FilterUser() {
                     type="text"
                     placeholder="User"
                     name="username"
+                    value={credentials.username}
                     id="username"
-                    value={credentails.username}
                     onChange={handleChange}
                     className={FilterUserStyles.filterUser__inputField}
                     label="Username"
@@ -71,8 +74,8 @@ function FilterUser() {
                     type="text"
                     placeholder="Email"
                     name="email"
-                   id="email"
-                    value={credentails.email}
+                    id="email"
+                    value={credentials.email}
                     onChange={handleChange}
                     className={FilterUserStyles.filterUser__inputField}
                     label="Email"
@@ -83,6 +86,7 @@ function FilterUser() {
                 <InputField
                     type="Date"
                     placeholder="Date"
+                    value={credentials.date}
                     name="date"
                     id="date"
                     className={FilterUserStyles.filterUser__inputField}
@@ -94,8 +98,8 @@ function FilterUser() {
                     type="text"
                     placeholder="Phone Number"
                     name="phone"
+                    value={credentials.phone}
                     id="phone"
-                    value={credentails.phone}
                     onChange={handleChange}
                     className={FilterUserStyles.filterUser__inputField}
                     label="Phone Number"
@@ -107,9 +111,9 @@ function FilterUser() {
                     placeholder="Status"
                     name="status"
                     id="status"
+                    value={credentials.status}
                     className={FilterUserStyles.filterUser__inputField}
                     label="Status"
-                    value={credentails.status}
                     onChange={handleChange}
                     labelClassName={FilterUserStyles.filterUser__inputContainer}
                     inputContainerClassName={FilterUserStyles.inputContainer}

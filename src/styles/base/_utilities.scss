@@ -37,13 +37,6 @@
 .hide{
   display: none !important;
 }
-.block {
-  display: block
-}
-
-.inline-block {
-  display: inline-block;
-}
 
 .my-s {
   margin: 25px 0 4px !important;
@@ -93,19 +86,30 @@
 }
 
 .col {
-
   flex-direction: column !important;
 }
 
-.show-on-mobile {
-  display: none !important;
-
-  @media (max-width: 900px) {
-    display: flex !important;
-    margin: 4rem 0;
-  }
-}
 
 .center {
   @include mixin.flex($justify: center, $align: center)
+}
+
+.Inactive {
+  color: variable.$secondary !important;
+  background: rgba($color: variable.$secondary, $alpha: 0.1) !important;
+}
+
+.Pending {
+  color: variable.$Warning-Main !important;
+  background: rgba($color: variable.$Warning-Main, $alpha: 0.1) !important;
+}
+
+.Active {
+  color: variable.$Success-Main !important;
+  background: rgba($color: variable.$Success-Main, $alpha: 0.1) !important;
+}
+
+.Blacklisted {
+  color: variable.$Error-Main !important;
+  background: rgba($color: variable.$Error-Main, $alpha: 0.1) !important;
 }

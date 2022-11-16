@@ -1,8 +1,6 @@
 
 
-type Props = {}
-
-export default function index({}: Props) {
+export default function index() {
   return (
     <div>404 Error Page</div>
   )

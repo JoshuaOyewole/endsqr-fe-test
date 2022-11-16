@@ -1,8 +1,7 @@
-
+import UserStyle from "./_user.module.scss"
 import React, { useEffect, useState } from "react"
 import axios from "axios"
 import TableStyle from "../table/_table.module.scss"
-import useAccountStatus from "../../../hooks/useAccountStatus"
 import DashboardStyle from "../../../pages/dashboard/_dashboard.module.scss"
 import UserBox from "../userBox/userBox"
 import userIcon from "../../../assets/images/userIcon.png"
@@ -36,7 +35,7 @@ type usersProps = {
 const Users = (props: usersComponentProps) => {
   const [users, setUsers] = useState<usersProps>([])
   const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage, setUsersPerPage] = useState(9);
+  const [usersPerPage] = useState(9);
 
   const viewMore = (event: React.MouseEvent) => {
     event.currentTarget?.parentElement?.parentElement?.lastElementChild?.classList.toggle("hide");
@@ -112,7 +111,7 @@ const Users = (props: usersComponentProps) => {
               <td key={user?.phoneNumber}>{user?.phoneNumber}</td>
               <td key={user?.createdAt}>May 15, 2020 10:00 AM</td>
               <td key={user?.accountBalance} className={`${TableStyle.userStatus}`}>
-                <span className={`${TableStyle.defaultUserStatus} ${props.iconClassName ? props.iconClassName : "Active"}`}>Active</span>
+                <span className={`${UserStyle.defaultUserStatus} ${props.iconClassName ? props.iconClassName : "Active"}`}>Active</span>
               </td>
               <MoreButton handleClick={viewMore} />
               <MoreBtnContainer userID={user?.id} />

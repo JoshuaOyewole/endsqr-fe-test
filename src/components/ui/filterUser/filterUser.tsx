@@ -1,13 +1,41 @@
+import React, { useState } from "react";
 import InputField from "../../form/inputFields/input/Input";
 import Button from "../button/button/button";
 import FilterUserStyles from "./_filterUser.module.scss"
 
-type filterUserProps = {}
 
-function FilterUser(props: filterUserProps) {
+type credentialsProps = {
+    organization: string,
+    username: string,
+    email: string,
+    phone: string,
+    status: string
+}
+
+function FilterUser() {
+    const [credentails, setCredentials] = useState<credentialsProps>(
+        {
+            organization: " ",
+            username: " ",
+            email: " ",
+            phone: " ",
+            status: " "
+        }
+    )
+
+    const handleChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        setCredentials((prev) => ({ ...prev, [e.currentTarget.id]: e.currentTarget.value }));
+        console.log(credentails.username);  
+    }
+
 
     const handleFilter = (event: React.MouseEvent) => {
+        /* Peform filter function based on the inputs from the user. Currently just toggling between showing and hiding the filter section.. */
         event.currentTarget.parentElement?.parentElement?.parentElement?.classList.toggle("hide");
+    }
+
+    const resetFields = () => {
+        console.log(credentails);
     }
 
     return (
@@ -16,7 +44,10 @@ function FilterUser(props: filterUserProps) {
                 <InputField
                     type="text"
                     placeholder="Select"
-                    name="Organization"
+                    name="organization"
+                    id="organization"
+                    value={credentails.organization}
+                    onChange={handleChange}
                     className={FilterUserStyles.filterUser__inputField}
                     label="Organization"
                     labelClassName={FilterUserStyles.filterUser__label}
@@ -27,6 +58,9 @@ function FilterUser(props: filterUserProps) {
                     type="text"
                     placeholder="User"
                     name="username"
+                    id="username"
+                    value={credentails.username}
+                    onChange={handleChange}
                     className={FilterUserStyles.filterUser__inputField}
                     label="Username"
                     labelClassName={FilterUserStyles.filterUser__label}
@@ -36,7 +70,10 @@ function FilterUser(props: filterUserProps) {
                 <InputField
                     type="text"
                     placeholder="Email"
-                    name="Email"
+                    name="email"
+                   id="email"
+                    value={credentails.email}
+                    onChange={handleChange}
                     className={FilterUserStyles.filterUser__inputField}
                     label="Email"
                     labelClassName={FilterUserStyles.filterUser__label}
@@ -46,7 +83,8 @@ function FilterUser(props: filterUserProps) {
                 <InputField
                     type="Date"
                     placeholder="Date"
-                    name="Organization"
+                    name="date"
+                    id="date"
                     className={FilterUserStyles.filterUser__inputField}
                     label="Date"
                     labelClassName={FilterUserStyles.filterUser__label}
@@ -55,7 +93,10 @@ function FilterUser(props: filterUserProps) {
                 <InputField
                     type="text"
                     placeholder="Phone Number"
-                    name="Organization"
+                    name="phone"
+                    id="phone"
+                    value={credentails.phone}
+                    onChange={handleChange}
                     className={FilterUserStyles.filterUser__inputField}
                     label="Phone Number"
                     labelClassName={FilterUserStyles.filterUser__label}
@@ -64,15 +105,18 @@ function FilterUser(props: filterUserProps) {
                 <InputField
                     type="text"
                     placeholder="Status"
-                    name="Status"
+                    name="status"
+                    id="status"
                     className={FilterUserStyles.filterUser__inputField}
                     label="Status"
+                    value={credentails.status}
+                    onChange={handleChange}
                     labelClassName={FilterUserStyles.filterUser__inputContainer}
                     inputContainerClassName={FilterUserStyles.inputContainer}
                 />
 
                 <div className={FilterUserStyles.filterUser__btnContainer}>
-                    <Button btnClassName="border_btn" handleClick={handleFilter}>Reset</Button>
+                    <Button btnClassName="border_btn" handleClick={resetFields}>Reset</Button>
                     <Button btnClassName="primary_btn" handleClick={handleFilter}>Filter</Button>
                 </div>
             </div>

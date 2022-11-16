@@ -4,8 +4,8 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import SidebarNavItem from "../../components/ui/sidebarNavItem/sidebarNavItem";
 
 
-/* NAVLIST ICONS */
-/* Most of the Icons were not on FontAwesome thats why I'm using the images else icons are always prefferable */
+/* NAVLIST ICONS 
+ Most of the Icons were not on FontAwesome thats why I'm using the images else icons are always prefferable */
 import usersIcon from "../../assets/images/user-friends.png";
 import guarantorIcon from "../../assets/images/users.png";
 import decisonModelIcon from "../../assets/images/handshake-regular.png";
@@ -31,14 +31,13 @@ import switchOrganizationIcon from "../../assets/images/briefcase.png";
 
 
 type navListProps = {
-    icon: React.ReactNode,
+    icon: JSX.Element,
     text: string,
     
 }
 
-
 const Sidebar = () => {
-    const icons = {
+    const navList = {
         customer: [
             {
                 icon: <img src={usersIcon} alt='usersIcon' />,
@@ -147,9 +146,9 @@ const Sidebar = () => {
                 <h4 className={DashboardStyles["dashboard__sidebar--sectionTitle"]}>CUSTOMERS</h4>
                 <ul>
                     {
-                        icons.customer.map((list: navListProps, index: number) => {
+                        navList.customer.map((navItem: navListProps, index: number) => {
                             return <SidebarNavItem navlink="#dashboard" key={index}>
-                                {list.icon} <span>{list.text}</span>
+                                {navItem.icon} <span>{navItem.text}</span>
                             </SidebarNavItem>
                         })
                     }
@@ -161,9 +160,9 @@ const Sidebar = () => {
                 <h4 className={DashboardStyles["dashboard__sidebar--sectionTitle"]}>BUSINESSES</h4>
                 <ul>
                     {
-                        icons.businesses.map((list: navListProps, index: number) => {
+                        navList.businesses.map((navItem: navListProps, index: number) => {
                             return <SidebarNavItem navlink="#dashboard" key={index}>
-                                {list.icon} <span>{list.text}</span>
+                                {navItem.icon} <span>{navItem.text}</span>
                             </SidebarNavItem>
                         })
                     }
@@ -175,9 +174,9 @@ const Sidebar = () => {
                 <h4 className={DashboardStyles["dashboard__sidebar--sectionTitle"]}>SETTINGS</h4>
                 <ul>
                     {
-                        icons.settings.map((list: navListProps, index: number) => {
+                        navList.settings.map((navItem: navListProps, index: number) => {
                             return <SidebarNavItem navlink="#dashboard" key={index}>
-                                {list.icon} <span>{list.text}</span>
+                                {navItem.icon} <span>{navItem.text}</span>
                             </SidebarNavItem>
                         })
                     }

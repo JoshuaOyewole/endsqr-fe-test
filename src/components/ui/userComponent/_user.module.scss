@@ -2,9 +2,6 @@
 @use "../../../styles/abstracts/mixins" as mixin;
 
 
-/* .userContainer{
-
-} */
 .userInfo {
     &__top {
         @include mixin.flex($align: center)
@@ -88,6 +85,12 @@
         @include mixin.flex($align: center, $justify: space-between);
         margin-top: 2rem;
 
+        @include mixin.media("phone") {
+            flex-direction: column;
+            width: 100%;
+            row-gap: 2rem;
+        }
+
         &--title {
             color: variable.$tertiary;
             font-weight: 500;
@@ -103,6 +106,12 @@
 
         @include mixin.media("desktop") {
             flex-basis: 47%;
+        }
+        @include mixin.media("phone") {
+            width: 85%;
+        }
+        @include mixin.media("xs-phone") {
+            width: 100%;
         }
     }
 }
@@ -166,7 +175,14 @@
     }
 
 }
-
+.defaultUserStatus{
+    display: block;
+    width: 85%;
+    text-align: center;
+    padding: 1rem 2rem !important;
+    border-radius: 100px;
+  }
+  
 .tableHeaderRow {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

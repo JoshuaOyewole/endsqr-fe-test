@@ -16,8 +16,8 @@ function MoreBtnContainer(props: moreBtnContainerProps) {
 
     const navigate = useNavigate();
 
-    const viewUserDetails = (id: number) => {
-        navigate(`/dashboard/users/${id}`)
+    const viewUserDetails = (UserID: number) => {
+        navigate(`/dashboard/users/${UserID}`)
     }
 
     return (

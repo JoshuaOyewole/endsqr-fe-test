@@ -1,4 +1,4 @@
-import TableStyle from "../table/_table.module.scss"
+import PaginationStyle from "./_pagination.module.scss"
 import Select from "../../form/Select/select"
 import PaginationButtonWrapper from "./paginationButtonWrapper"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,14 +28,14 @@ const Pagination = (props: PaginationProps) => {
     }
 
     return (
-        <div className={TableStyle.pagination__container}>
-            <div className={TableStyle.pagination__statusWrapper}>
-                <span className={TableStyle.pagination__statusInfo}>Showing</span>
+        <div className={PaginationStyle.pagination__container}>
+            <div className={PaginationStyle.pagination__statusWrapper}>
+                <span className={PaginationStyle.pagination__statusInfo}>Showing</span>
                 <Select
                     selectOptions={pageNumbers}
                     selectPlaceholder="10"
                 />
-                <span className={TableStyle["pagination__statusInfo--right"]}> out of 100</span>
+                <span className={PaginationStyle["pagination__statusInfo--right"]}> out of 100</span>
             </div>
             <PaginationButtonWrapper>
                 <button onClick={() => prevBtn()}>

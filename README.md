@@ -1,21 +1,15 @@
-# Lendsqr Admin Dashboard
+# Background
+At Lendsqr, many of our lenders use web apps to reach over half a million customers. 
 
-This project was created using React, Typescript and SASS by Joshua Oyewole
+The interactive admin dashboard was created to help Lendsqr Admins to effectively manage users account. Ranging from activating a user account, blacklisting a user, and also filter through lists of users giving way for a well presented datas of each user. 
 
 
-In the project directory, you can run:
+### LOGGING IN
+Log into the app using the following credentials
 
-### `npm start`
+Email: admin@admin.com
+Password: admin
 
-### DESCRIPTION
-This is an interactive admin dashboard template to handle Lendsqr users information. 
-It enables the admin to filter through lists of users.
-
-##GENERAL USAGE
-
-###LOGGING IN
-Log into the app using the following credentials ---- admin@admin.com
-You can use any password of your choice. 
 PLEASE NOTE: Password must not be left blank.
 
 ### TABLE
@@ -34,5 +28,18 @@ Clicking on the dotted menu icon ![menu icon](./src/assets/more.svg) opens up a 
 details tab will take you to the User details page of that particular user.
 
 
-###USER DETAILS PAGE
+### USER DETAILS PAGE
 This page displays all the necessary information about the user. 
+
+### Author
+This Software was design and developed using React, Typescript and SASS by ![Joshua Oyewole](https://www.joshuaoyewole.com.ng) which allows us to rapidly ideate and release features rapidly and reliably.
+
+
+### INSTALLATION PROCEDURE
+In the project directory, you can run:
+
+
+### `npm run dev`
+
+
+

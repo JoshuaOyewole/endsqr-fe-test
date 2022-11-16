@@ -130,7 +130,7 @@ const Sidebar = () => {
             <ul>
                 <SidebarNavItem navlink="#switchOrganization">
                     <img src={switchOrganizationIcon} alt='dashboard icon' />
-                    <div className="mr-sIcon">
+                    <div>
                         <span> Switch Organization </span>
                         <FontAwesomeIcon icon={faChevronDown} />
                     </div>

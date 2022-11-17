@@ -8,8 +8,8 @@ type PaginationProps = {
     usersPerPage: number,
     totalUsers: number,
     paginate: (value: number) => void,
-    nextBtn: () => void,
-    prevBtn: () => void,
+    nextBtn: (totalPages:number) => void,
+    prevBtn: (totalPages:number) => void,
 }
 
 type pageNumberProps = {
@@ -26,6 +26,8 @@ const Pagination = (props: PaginationProps) => {
     for (let i = 1; i <= Math.ceil(totalUsers / usersPerPage); i++) {
         pageNumbers.push({ value: i, label: i });
     }
+    
+    const displayPageNumbers = pageNumbers.slice(0,3);
 
     return (
         <div className={PaginationStyle.pagination__container}>
@@ -38,15 +40,16 @@ const Pagination = (props: PaginationProps) => {
                 <span className={PaginationStyle["pagination__statusInfo--right"]}> out of 100</span>
             </div>
             <PaginationButtonWrapper>
-                <button onClick={() => prevBtn()}>
+                <button onClick={() => prevBtn(pageNumbers.length)}>
                     <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
-                {pageNumbers.map((page, index) => <button key={index} onClick={() => paginate(page.value)}>{page.value}</button>)}
-                <button onClick={() => nextBtn()}>
+                {displayPageNumbers.map((page, index) => <button key={index} onClick={() => paginate(page.value)}>{page.value}</button>)}
+                <button onClick={() => nextBtn(pageNumbers.length)}>
                     <FontAwesomeIcon icon={faChevronRight} />
                 </button>
             </PaginationButtonWrapper>
         </div>
+     
     )
 }
 

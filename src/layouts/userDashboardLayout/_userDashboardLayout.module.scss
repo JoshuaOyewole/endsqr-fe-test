@@ -147,7 +147,7 @@
         }
 
         @include mixin.media("phone") {
-            padding: 2rem;
+            padding: 2rem 1rem;
             flex-basis: 100%;
         }
     }

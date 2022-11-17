@@ -35,19 +35,34 @@ type usersProps = {
 const Users = (props: usersComponentProps) => {
   const [users, setUsers] = useState<usersProps>([])
   const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage] = useState(9);
+  const [usersPerPage] = useState(10);
+
+  /* FETCH USERS FROM API */
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users");
+      setUsers(response.data);
+      localStorage.setItem("users", JSON.stringify(response.data)); 
+    } catch (error) {
+      throw error
+    }
+  }
 
   const viewMore = (event: React.MouseEvent) => {
     event.currentTarget?.parentElement?.parentElement?.lastElementChild?.classList.toggle("hide");
   }
 
-  /* FETCH ALL USERS IMMEDIAATELY THE COMPONENT LOADS */
+
   useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await axios.get("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users");
-      setUsers(response.data);
+    //Fetch users data stored in localStorage
+    const getUsers = localStorage.getItem("users");
+
+    if (getUsers != null) {
+      setUsers(JSON.parse(getUsers));
+      
+    } else {
+      fetchUsers();
     }
-    fetchUsers();
   }, [])
 
 
@@ -57,10 +72,18 @@ const Users = (props: usersComponentProps) => {
   const currentUsers = users.slice(indexOfFirstUser,
     indexOfLastUser)
 
-    /* CHANGE PAGE */
-    const paginate = (pageNumber:number) => setCurrentPage(pageNumber)
-    const prev = () => setCurrentPage((prev)=> prev - 1 )
-    const next = () => setCurrentPage((prev)=> prev + 1 )
+  /* CHANGE PAGE */
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const next = (totalPages: number) => {
+    if (currentPage >= totalPages) setCurrentPage(1)
+    setCurrentPage((prevPage) => (prevPage + 1))
+  }
+
+  const prev = (totalPages: number) => {
+    if (currentPage <= 0) setCurrentPage(totalPages)
+    setCurrentPage((prevPage) => (prevPage - 1))
+  }
 
   return (
     <>

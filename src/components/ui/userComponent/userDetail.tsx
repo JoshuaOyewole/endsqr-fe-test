@@ -6,13 +6,12 @@ import UserStyle from "./_user.module.scss"
 import Button from "../button/button/button";
 import starImg from "../../../assets/images/star.png"
 import starImg2 from "../../../assets/images/star2.png"
-/* import UserGeneralDetails from "./generalDetails"; */
 import { NavLink, useParams } from "react-router-dom";
 import UserInfoSection from "./userInfoSection";
 
 
 interface usersProps {
-    id: number;
+    id: number | string;
     accountBalance: string;
     accountNumber: string,
     createdAt: string;
@@ -45,14 +44,16 @@ interface usersProps {
         sector: string,
         duration: string,
         officeEmail: string,
-        monthlyIncome: [string, string],
+        monthlyIncome: string[],
         loanRepayment: string
     }
 }
 
 
 const UserDetails = () => {
-    const [user, setUser] = useState<usersProps>({
+    const userID = useParams().id;
+   
+    const initialValue = {
         id: 1,
         accountBalance: "₦200,000.00",
         accountNumber: "9912345678",
@@ -80,7 +81,7 @@ const UserDetails = () => {
             instagram: "@grace_effiom",
             twitter: "@grace_effiom"
         },
-    education: {
+        education: {
             level: "B.Sc",
             employmentStatus: "Employed",
             sector: "FinTech",
@@ -89,27 +90,30 @@ const UserDetails = () => {
             monthlyIncome: ["20000000", "40000000"],
             loanRepayment: "40,000"
         }
-    })
-    const userID = useParams().id;
+    }
+    const [user, setUser] = useState<usersProps>(initialValue)
 
     /* FETCH USER BASED ON HIS/HER ID */
+    const fetchUsers = async () => {
+        const response = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userID}`);
+        setUser(response?.data);
+    }
+
     useEffect(() => {
-        const fetchUsers = async () => {
-            const response = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userID}`);
-            setUser(response?.data);
+        const fetchUser = localStorage.getItem("users");
+
+        // Check if the User Data was gotten and not null 
+        if (fetchUser != null) {
+            const getUser = JSON.parse(fetchUser).filter((user:usersProps)=>user.id == userID);
+            console.log(getUser);
+            
+            setUser(getUser[0]);  
         }
+
         fetchUsers();
-
     }, [])
+    
 
-
-    const personalInfo = [user?.profile.firstName, user?.phoneNumber, user?.email, user?.profile.bvn, user?.profile.gender, "Single", "None", "Parent’s Apartment"];
-
-    const education = [user?.education.level, user?.education.employmentStatus, user?.education.sector, user?.education.duration, user?.education.officeEmail, user?.education.monthlyIncome[0], user?.education.loanRepayment];
-
-    const socials = [user?.socials.twitter, user?.socials.facebook, user?.socials.instagram];
-
-    const guarantor = [user?.guarantor.firstName, user?.guarantor.phoneNumber, user?.guarantor.firstName + "@gmail.com","Sister"]
 
     return (
         <div className={UserStyle.userContainer}>
@@ -143,27 +147,31 @@ const UserDetails = () => {
 
             <header className={UserStyle.userInfo__header}>
                 <div className={UserStyle.userInfo__top}>
-                    <div className={UserStyle.userInfo__profilePixs}>
-                    {<img src={user?.profile.avatar} alt="Profile pixs"/>}
-                    </div>
-                    <div className={UserStyle.userInfo__userNameContainer}>
-                        <div className={UserStyle.userInfo__name}>{`${user?.profile.firstName} ${user?.profile.lastName}`}</div>
-                        <div className={UserStyle.userInfo__username}>{user?.userName}</div>
-                    </div>
-                    <div className={UserStyle.userInfo__userTierContainer}>
-                        <h3 className={UserStyle.userInfo__userTier}>User’s Tier</h3>
-                        <div className={UserStyle.userInfo__starsContainer}>
-                            <img src={starImg} alt="userTier" className={UserStyle.userInfo__usertTierStar} />
-                            <img src={starImg2} alt="userTier" className={UserStyle.userInfo__usertTierStar} />
-                            <img src={starImg2} alt="userTier" className={UserStyle.userInfo__usertTierStar} />
+                    <div className={UserStyle.userInfo__profileImgWrapper}>
+                        <div className={UserStyle.userInfo__profilePixs}>
+                            {<img src={user?.profile?.avatar} alt="Profile pixs" />}
+                        </div>
+                        <div className={UserStyle.userInfo__userNameContainer}>
+                            <div className={UserStyle.userInfo__name}>{`${user?.profile?.firstName} ${user?.profile?.lastName}`}</div>
+                            <div className={UserStyle.userInfo__username}>{user?.userName}</div>
                         </div>
                     </div>
-                    <div className={UserStyle.userInfoContainer}>
-                        <h3 className={UserStyle.userInfo__name}>
-                            ₦{user?.accountBalance}
-                        </h3>
-                        <div className={UserStyle.userInfo__accountNumber}>
-                            {user?.accountNumber}/Providus Bank
+                    <div className={UserStyle.userInfo__otherDetailsWrapper}>
+                        <div className={UserStyle.userInfo__userTierContainer}>
+                            <h3 className={UserStyle.userInfo__userTier}>User’s Tier</h3>
+                            <div className={UserStyle.userInfo__starsContainer}>
+                                <img src={starImg} alt="userTier" className={UserStyle.userInfo__usertTierStar} />
+                                <img src={starImg2} alt="userTier" className={UserStyle.userInfo__usertTierStar} />
+                                <img src={starImg2} alt="userTier" className={UserStyle.userInfo__usertTierStar} />
+                            </div>
+                        </div>
+                        <div className={UserStyle.userInfoContainer}>
+                            <h3 className={UserStyle.userInfo__name}>
+                                ₦{user?.accountBalance}
+                            </h3>
+                            <div className={UserStyle.userInfo__accountNumber}>
+                                {user?.accountNumber}/Providus Bank
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -192,22 +200,22 @@ const UserDetails = () => {
             <div className={UserStyle.userDetailsContainer}>
                 <UserInfoSection
                     tableHeader={["full Name", "Phone Number", "Email Address", "Bvn", "Gender", "Marital status", "Children", "Type of residence"]}
-                    tdatas={personalInfo}
+                    tdatas={[user?.profile.firstName, user?.phoneNumber, user?.email, user?.profile.bvn, user?.profile.gender, "Single", "None", "Parent’s Apartment"]}
                     tableTitle="Personal Information"
                 />
                 <UserInfoSection
                     tableHeader={["level of education", "employment status", "sector of employment", "Duration of employment", "office email", "Monthly income", "loan repayment"]}
-                    tdatas={education}
+                    tdatas={[user?.education.level, user?.education.employmentStatus, user?.education.sector, user?.education.duration, user?.education.officeEmail, user?.education.monthlyIncome[0], user?.education.loanRepayment]}
                     tableTitle="Education and Employment"
                 />
                 <UserInfoSection
                     tableHeader={["Twitter", "Facebook", "Instagram"]}
-                    tdatas={socials}
+                    tdatas={[user?.socials.twitter, user?.socials.facebook, user?.socials.instagram]}
                     tableTitle="Socials"
                 />
                 <UserInfoSection
                     tableHeader={["full Name", "Phone Number", "Email Address", "Relationship"]}
-                    tdatas={guarantor}
+                    tdatas={[user?.guarantor.firstName, user?.guarantor.phoneNumber, user?.guarantor.firstName + "@gmail.com", "Sister"]}
                     tableTitle="Guarantor"
                 />
             </div>

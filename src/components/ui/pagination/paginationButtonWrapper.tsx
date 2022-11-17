@@ -1,4 +1,4 @@
-import TableStyle from "../table/_table.module.scss"
+import PaginationStyles from "./_pagination.module.scss"
 
 type Props = {
     children:React.ReactNode;
@@ -8,7 +8,7 @@ const PaginationButtonWrapper = (props: Props) => {
     const {children} = props;
 
     return (
-        <div className={TableStyle["pagination__buttonsWrapper"]}>
+        <div className={PaginationStyles["pagination__buttonsWrapper"]}>
             {children}
         </div>
     )

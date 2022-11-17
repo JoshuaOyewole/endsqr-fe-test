@@ -87,6 +87,7 @@ function FilterUser() {
                     type="Date"
                     placeholder="Date"
                     value={credentials.date}
+                    onChange={handleChange}
                     name="date"
                     id="date"
                     className={FilterUserStyles.filterUser__inputField}

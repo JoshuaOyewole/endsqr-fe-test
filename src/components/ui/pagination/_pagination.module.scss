@@ -30,26 +30,36 @@
       }
     }
   
-    &__buttonsWrapper {
-      @include mixin.flex($align: center);
-  
-      button {
-        flex-basis: 10%;
-        margin: 1rem;
-        background-color: transparent;
-  
-        &:first-child,
-        &:last-child {
-          background: rgba(33, 63, 125, 0.1);
-          border-radius: 4px;
-          padding: .3rem .5rem;
-  
-          & svg {
-            color: #213F7D;
-          }
+  &__buttonsWrapper {
+    @include mixin.flex($align: center, $justify:space-between);
+    flex-basis: 10%;
+
+    @include mixin.media("phone"){
+      flex-basis: 20%;
+    }
+    /* @include mixin.media("sm-phone"){
+      flex-basis: 15%;
+    } */
+    button {
+      flex-basis: 10%;
+      margin: 1rem;
+      background-color: transparent;
+
+      @include mixin.media("phone"){
+        margin: .5rem;
+      }
+
+      &:first-child,
+      &:last-child {
+        background: rgba(33, 63, 125, 0.1);
+        border-radius: 4px;
+        padding: .3rem .5rem;
+
+        & svg {
+          color: #213F7D;
         }
-  
-        @include mixin.media("phone") {
+      }
+        @include mixin.media("xs-phone") {
           &:not(:first-child, :last-child) {
             display: none;
           }

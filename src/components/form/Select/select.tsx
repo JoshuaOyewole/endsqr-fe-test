@@ -25,7 +25,6 @@ const Select: React.FC<SelectProps> = (props, _ref) => {
     ...rest
   } = props;
 
-
   return (
     <div className={`xs ${GeneralInputStyles.input_container}`}>
       {label && (

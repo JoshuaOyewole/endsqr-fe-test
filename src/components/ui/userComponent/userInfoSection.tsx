@@ -32,9 +32,9 @@ const UserInfoSection = (props: userInfoSectionProps) => {
         <section className={`${TableStyles.table_container} ${UserStyle.tableContainer} `}>
             <div className={UserStyle.userDetails__sectionTitle}>{props.tableTitle}</div>
 
-            <table className={props.tableClass}>
+            <table className={UserStyle.table}>
                 <thead>
-                    <tr className={`${UserStyle.tableHeaderRow} ${props.tableHeader?.length <8  &&  UserStyle["tableHeaderRow--cols-4"]}`}>
+                    <tr className={UserStyle.tableHeaderRow}>
                         {theadRowOne.map((header: string, index: number) => {
                             return (
                                 <th
@@ -48,7 +48,7 @@ const UserInfoSection = (props: userInfoSectionProps) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <TableRow tableRowClass={`${UserStyle.tableHeaderRow} ${props.tdatas?.length <8  &&  UserStyle["tableHeaderRow--cols-4"]}`}>
+                    <TableRow tableRowClass={`${UserStyle.tableHeaderRow}`}>
                         {tdataRowOne?.map((td, index) => {
                             return <td key={index}>{td}</td>
                         })}
@@ -56,9 +56,9 @@ const UserInfoSection = (props: userInfoSectionProps) => {
                 </tbody>
             </table>
 
-            {secondRow && <table className="mt-1">
+            {secondRow && <table className={`${UserStyle.table} mt-1`}>
                 <thead>
-                    <tr className={`${UserStyle.tableHeaderRow} ${props.tableHeader?.length <8  &&  UserStyle["tableHeaderRow--cols-4"]}`}>
+                    <tr className={`${UserStyle.tableHeaderRow}`}>
                         {theadRowSecond?.map((header: string, index: number) => {
                             return (
                                 <th
@@ -72,7 +72,7 @@ const UserInfoSection = (props: userInfoSectionProps) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <TableRow tableRowClass={`${UserStyle.tableHeaderRow} ${props.tdatas?.length <8  &&  UserStyle["tableHeaderRow--cols-4"]}`}>
+                    <TableRow tableRowClass={`${UserStyle.tableHeaderRow}`}>
                         {tdataRowSecond?.map((td, index) => {
                             return <td key={index}>{td}</td>
                         })}

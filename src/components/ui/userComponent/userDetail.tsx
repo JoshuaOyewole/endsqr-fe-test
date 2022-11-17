@@ -105,8 +105,7 @@ const UserDetails = () => {
         // Check if the User Data was gotten and not null 
         if (fetchUser != null) {
             const getUser = JSON.parse(fetchUser).filter((user:usersProps)=>user.id == userID);
-            console.log(getUser);
-            
+   
             setUser(getUser[0]);  
         }
 

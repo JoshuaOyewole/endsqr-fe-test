@@ -223,7 +223,7 @@
 
     /*  &--cols-4 {
         grid-template-columns: repeat(4, 1fr) !important;
-    } */
+    } 
     @include mixin.media("desktop") {
         grid-template-columns: repeat(3, 1fr) !important;
     }
@@ -231,12 +231,20 @@
     @include mixin.media("phone") {
         grid-template-columns: repeat(2, 1fr) !important;
     }
+    */
 }
 
 .table{
     @include mixin.media("tab") {
-        min-width: auto !important;
+        min-width: 110rem;
     } 
+    @include mixin.media("phone") {
+        min-width: 60rem;
+    } 
+    @include mixin.media("sm-phone") {
+        min-width: 40rem;
+    } 
+   
 }
 .tableContainer {
     background: variable.$White;

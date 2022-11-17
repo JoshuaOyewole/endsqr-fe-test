@@ -1,6 +1,7 @@
 import UserStyle from "./_user.module.scss"
 import TableStyles from "../table/_table.module.scss"
 import TableRow from "../table/tablebody";
+import { useState, useEffect } from "react";
 
 type userInfoSectionProps = {
     tableHeader: Array<string>;
@@ -16,14 +17,36 @@ type userInfoSectionProps = {
 }
 const UserInfoSection = (props: userInfoSectionProps) => {
 
+    function getWindowSize() {
+        const { innerWidth, innerHeight } = window;
+        return { innerWidth, innerHeight };
+    }
+
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowSize(getWindowSize());
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
+    /* {windowSize.innerWidth} */
+
     /* Dividing the Table Row into 2 to fit the design specification */
-    const theadRowOne = props.tableHeader?.length >= 8 ? props.tableHeader?.slice(0, 5): props.tableHeader?.slice(0, 4);
-    const tdataRowOne = props.tdatas?.length >= 8 ? props.tdatas?.slice(0, 5): props.tdatas?.slice(0, 4);
-
-    const theadRowSecond = props.tableHeader?.length >= 8 ? props.tableHeader?.slice(5, props.tableHeader.length): props.tableHeader?.slice(4, props.tableHeader.length);
     
+    const theadRowOne = props.tableHeader?.length >= 8 ? props.tableHeader?.slice(0, 5) : props.tableHeader?.slice(0, 4);
+    const tdataRowOne = props.tdatas?.length >= 8 ? props.tdatas?.slice(0, 5) : props.tdatas?.slice(0, 4);
 
-    const tdataRowSecond = props.tdatas?.length >= 8 ? props.tdatas?.slice(5, props.tdatas.length): props.tdatas?.slice(4, props.tdatas.length);
+    const theadRowSecond = props.tableHeader?.length >= 8 ? props.tableHeader?.slice(5, props.tableHeader.length) : props.tableHeader?.slice(4, props.tableHeader.length);
+
+
+    const tdataRowSecond = props.tdatas?.length >= 8 ? props.tdatas?.slice(5, props.tdatas.length) : props.tdatas?.slice(4, props.tdatas.length);
 
     /* If the Table Data is greater than 5 then, we should have a second Row since the maximun th and td are 5 */
     const secondRow = (props.tableHeader.length > 5 && props.tdatas.length > 5) ? true : false;

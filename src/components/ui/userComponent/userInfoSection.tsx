@@ -1,7 +1,6 @@
 import UserStyle from "./_user.module.scss"
 import TableStyles from "../table/_table.module.scss"
 import TableRow from "../table/tablebody";
-import { useState, useEffect } from "react";
 
 type userInfoSectionProps = {
     tableHeader: Array<string>;
@@ -16,27 +15,6 @@ type userInfoSectionProps = {
     secondTableDatas?: Array<string>;
 }
 const UserInfoSection = (props: userInfoSectionProps) => {
-
-    function getWindowSize() {
-        const { innerWidth, innerHeight } = window;
-        return { innerWidth, innerHeight };
-    }
-
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
-
-    /* {windowSize.innerWidth} */
 
     /* Dividing the Table Row into 2 to fit the design specification */
     

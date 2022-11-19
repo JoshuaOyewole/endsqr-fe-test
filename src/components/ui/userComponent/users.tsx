@@ -70,20 +70,25 @@ const Users = (props: usersComponentProps) => {
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = users.slice(indexOfFirstUser,
-    indexOfLastUser)
+    indexOfLastUser);
+  
 
-  /* CHANGE PAGE */
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+    console.log(currentPage);
+    
 
+  
   const next = (totalPages: number) => {
-    if (currentPage >= totalPages) setCurrentPage(1)
-    setCurrentPage((prevPage) => (prevPage + 1))
+    if (currentPage >= totalPages) setCurrentPage(1);
+    setCurrentPage((prevPage) => (prevPage + 1));
   }
 
   const prev = (totalPages: number) => {
-    if (currentPage <= 0) setCurrentPage(totalPages)
-    setCurrentPage((prevPage) => (prevPage - 1))
+    if (currentPage == 1) setCurrentPage(totalPages);
+    setCurrentPage(currentPage - 1);
   }
+
+  /* CHANGE PAGE */
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <>
